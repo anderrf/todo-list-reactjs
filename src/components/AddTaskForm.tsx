@@ -2,13 +2,18 @@ import { PlusCircle } from 'phosphor-react'
 import styles from './AddTaskForm.module.css'
 import { ChangeEvent, FormEvent, useState } from 'react'
 
-export function AddTaskForm(){
+interface AddTaskProps{
+    onAddTask: (taskName: string) => void
+}
+
+export function AddTaskForm({onAddTask}: AddTaskProps){
     const [newTaskText, setNewTaskText] = useState('')
 
     const isNewTaskEmpty = newTaskText.length < 3
 
     function handleAddNewTask(event: FormEvent){
         event.preventDefault()
+        onAddTask(newTaskText)
         setNewTaskText('')
     }
 

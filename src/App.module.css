@@ -12,6 +12,35 @@
   justify-content: center;
 }
 
+.taskStatus{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2rem 0;
+}
+
+.taskStatus > div p{
+  font-weight: bold;
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+
+.taskStatus > div p span{
+  color: var(--gray-200);
+  background: var(--gray-400);
+  border-radius: 50%;
+  padding: 0.25rem;
+  margin-left: 1rem;
+}
+
+.tasksCounter p{
+  color: var(--blue);
+}
+
+.doneTasksCounter p{
+  color: var(--purple);
+}
+
 @media (max-width: 768px){
   html{
       font-size: 87.5%;
