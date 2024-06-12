@@ -4,8 +4,11 @@ import { Header } from './components/Header'
 import { AddTaskForm } from './components/AddTaskForm'
 import { useState } from 'react'
 import { EmptyTasks } from './components/EmptyTasks'
+import { TaskItem } from './components/TaskItem'
+import { v4 as uuidV4} from 'uuid'
 
 export interface Task{
+  id: string
   title: string
   done: boolean
 }
@@ -18,10 +21,27 @@ function App() {
 
   function addTask(taskName: string){
     const newTask: Task = {
+      id: uuidV4(),
       title: taskName,
       done: false
     }
     setTasks([...tasks, newTask])
+  }
+
+  function deleteTask(taskId: string){
+    const tasksWithoutDeletedOne = tasks.filter(task => task.id !== taskId)
+    setTasks(tasksWithoutDeletedOne)
+  }
+
+  function changeTaskStatus(taskId: string){
+    console.log(taskId)
+    const updatedTasks = tasks.map(task => {
+      if(task.id === taskId){
+        return {...task, done: !task.done}
+      }
+      return task
+    })
+    setTasks(updatedTasks)
   }
 
   return (
@@ -39,7 +59,18 @@ function App() {
         </div>
         {
           createdTasks ?
-          <div>yes</div> : 
+          <div className={styles.taskList}>
+            {
+              tasks.map(task => {
+                return <TaskItem 
+                  key={task.id}
+                  task={task}
+                  onDeleteTask={deleteTask} 
+                  onChangeTaskStatus={changeTaskStatus}
+                />
+              })
+            }
+          </div> : 
           <EmptyTasks/>
         }
       </main>

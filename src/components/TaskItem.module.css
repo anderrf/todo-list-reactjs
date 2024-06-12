@@ -1,0 +1,108 @@
+.taskItem{
+    display: grid;
+    grid-template-columns: 3rem 1fr 3rem;
+    align-items: flex-start;
+    background: var(--gray-500);
+    border: var(--gray-400);
+    border-radius: 8px;
+    width: 100%;
+    padding: 0.5rem;
+}
+
+.taskItem p{
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: var(--gray-100);
+    text-decoration: none;
+}
+
+.taskItem input{
+    accent-color: var(--blue);
+}
+
+.taskItem button{
+    color: var(--gray-300);
+    background: transparent;
+    border: transparent;
+    border-radius: 8px;
+    transition: background-color 0.1s, color 0.1s;
+    height: 2rem;
+    width: 2rem;
+    cursor: pointer;
+}
+
+.taskItem button:hover{
+    color: var(--danger);
+    background: var(--gray-400);
+}
+
+.radioButtonActive, .radioButtonInactive{
+    width: 1.4rem;
+    height: 1.4rem;
+    border: 2px solid;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    overflow: hidden;
+    padding: 0;
+}
+
+.radioButtonActive{
+    color: var(--gray-100);
+    border-color: var(--purple-dark);
+}
+
+.radioButtonActive .innerRadioButton{
+    background: var(--purple-dark);
+}
+
+.radioButtonActive:hover{
+    border-color: var(--purple);
+}
+
+.radioButtonActive:hover .innerRadioButton{
+    background: var(--purple);
+}
+
+
+.radioButtonInactive{
+    border-color: var(--blue);
+    background: transparent;
+}
+
+.radioButtonInactive:hover{
+    border-color: var(--blue-dark);
+}
+
+.radioButtonInactive .innerRadioButton{
+    visibility: hidden;
+}
+
+.radioButtonInactive:hover .innerRadioButton{
+    visibility: visible;
+    opacity: 0.7;
+    background: var(--blue-dark);
+}
+
+.radioButtonActive svg{
+    visibility: visible;
+}
+
+.radioButtonInactive svg{
+    visibility: hidden;
+}
+
+.radioButtonActive + p{
+    color: var(--gray-300);
+    text-decoration: line-through;
+}
+
+.innerRadioButton svg{
+    margin: auto;
+}
+
+.innerRadioButton{
+    width: 100%;
+    display: flex;
+    margin: 0;
+}
